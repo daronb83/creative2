@@ -1,0 +1,193 @@
+Youtube:
+https://www.googleapis.com/youtube/v3/search?part=snippet&location=40.3641184%2C-111.73854&locationRadius=5mi&maxResults=2&q=cats&type=video&key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo
+
+https://www.googleapis.com/youtube/v3/search?
+part=snippet
+location=40.3641184,-111.73854
+locationRadius=5mi
+q=cats
+type=video
+key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo
+
+{
+ "kind": "youtube#searchListResponse",
+ "etag": "\"VPWTmrH7dFmi4s1RqrK4tLejnRI/WmzWsfTE7gHas4-vIQgRjWUXftw\"",
+ "nextPageToken": "CAIQAA",
+ "regionCode": "US",
+ "pageInfo": {
+  "totalResults": 503,
+  "resultsPerPage": 2
+ },
+ "items": [
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"VPWTmrH7dFmi4s1RqrK4tLejnRI/oL9SWC95E02JuH83gy2jZ-bhm2Y\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "lCdAp69TOIk"
+   },
+   "snippet": {
+    "publishedAt": "2017-01-11T18:30:01.000Z",
+    "channelId": "UCs6uJVO1UA6GqdWxe7gxQvA",
+    "title": "How To Bathe A Cat",
+    "description": "How to give a cat a bath who hates water... without getting scratched. Hey guys! Our family got a surprise kitten 1 year ago for Christmas (which was my ...",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/lCdAp69TOIk/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/lCdAp69TOIk/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/lCdAp69TOIk/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Princess Hairstyles",
+    "liveBroadcastContent": "none"
+   }
+  },
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"VPWTmrH7dFmi4s1RqrK4tLejnRI/_4JMxHz7lRfo6eDrisnX2r04zpQ\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "j9SaIKNanvQ"
+   },
+   "snippet": {
+    "publishedAt": "2016-08-07T17:22:58.000Z",
+    "channelId": "UCUEd30vKIa3CW6YQDuSxQcQ",
+    "title": "Tony and the Cat",
+    "description": "Tony loves playing with Charlie's cats. He likes Spud at home as well, but Spud doesn't have quite the energy or inclination to play. Tony had a great fun chasing ...",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/j9SaIKNanvQ/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/j9SaIKNanvQ/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/j9SaIKNanvQ/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Billy Wardle",
+    "liveBroadcastContent": "none"
+   }
+  }
+ ]
+}
+
+
+Google Geocoding:
+https://maps.googleapis.com/maps/api/geocode/json?address=Pleasant+Grove,+UT&key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo
+
+https://maps.googleapis.com/maps/api/geocode/json?
+address=Pleasant+Grove,+UT
+key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo
+
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Pleasant Grove",
+               "short_name" : "Pleasant Grove",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Utah County",
+               "short_name" : "Utah County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Utah",
+               "short_name" : "UT",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Pleasant Grove, UT, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 40.413956,
+                  "lng" : -111.6954911
+               },
+               "southwest" : {
+                  "lat" : 40.344471,
+                  "lng" : -111.7718439
+               }
+            },
+            "location" : {
+               "lat" : 40.3641184,
+               "lng" : -111.73854
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 40.413956,
+                  "lng" : -111.6954911
+               },
+               "southwest" : {
+                  "lat" : 40.344471,
+                  "lng" : -111.7718439
+               }
+            }
+         },
+         "place_id" : "ChIJ58ebQR-ETYcRHiy9tPIfvaY",
+         "types" : [ "locality", "political" ]
+      }
+   ],
+   "status" : "OK"
+}
+
+
+Stack Exchange:
+{
+  "items":[
+    {
+      "tags":["javascript","jquery","matrix"],
+      "owner":
+        {
+          "reputation":61,
+          "user_id":6732666,
+          "user_type":"registered",
+          "accept_rate":8,
+          "profile_image":"https://www.gravatar.com/avatar/85fbce18e6ad6e4e10d65306ea8dd641?s=128&d=identicon&r=PG&f=1",
+          "display_name":"Doug Greaney",
+          "link":"https://stackoverflow.com/users/6732666/doug-greaney"
+        },
+      "is_answered":false,
+      "view_count":25,
+      "answer_count":1,
+      "score":0,
+      "last_activity_date":1506574060,
+      "creation_date":1506570861,
+      "last_edit_date":1506573661,
+      "question_id":46460709,
+      "link":"https://stackoverflow.com/questions/46460709/javascript-dynamic-scoring-matrix",
+      "title":"JavaScript Dynamic Scoring Matrix"
+    }
+
+
+Flickr: https://www.flickr.com/services/api/
+https://api.flickr.com/services/rest/?
+key=bc09d829b6acc41114f5a3c843a1004f
+
+Secret:
+2d14a60419bab9c4
