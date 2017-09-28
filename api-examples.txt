@@ -25,7 +25,7 @@ key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo
    "id": {
     "kind": "youtube#video",
     "videoId": "lCdAp69TOIk"
-   },
+    },
    "snippet": {
     "publishedAt": "2017-01-11T18:30:01.000Z",
     "channelId": "UCs6uJVO1UA6GqdWxe7gxQvA",
@@ -161,28 +161,33 @@ Stack Exchange:
 {
   "items":[
     {
-      "tags":["javascript","jquery","matrix"],
-      "owner":
-        {
-          "reputation":61,
-          "user_id":6732666,
-          "user_type":"registered",
-          "accept_rate":8,
-          "profile_image":"https://www.gravatar.com/avatar/85fbce18e6ad6e4e10d65306ea8dd641?s=128&d=identicon&r=PG&f=1",
-          "display_name":"Doug Greaney",
-          "link":"https://stackoverflow.com/users/6732666/doug-greaney"
+      "tags":[
+        "javascript",
+        "jquery",
+        "css"
+        ],
+      "owner":{
+        "reputation":100,
+        "user_id":2150309,
+        "user_type":
+        "registered",
+        "accept_rate":41,
+        "profile_image":"https://www.gravatar.com/avatar/f7ac5c3e2ebdc6bc782579792e98fe26?s=128&d=identicon&r=PG",
+        "display_name":"pjldesign",
+        "link":"https://stackoverflow.com/users/2150309/pjldesign"
         },
       "is_answered":false,
-      "view_count":25,
-      "answer_count":1,
+      "view_count":12,
+      "answer_count":0,
       "score":0,
-      "last_activity_date":1506574060,
-      "creation_date":1506570861,
-      "last_edit_date":1506573661,
-      "question_id":46460709,
-      "link":"https://stackoverflow.com/questions/46460709/javascript-dynamic-scoring-matrix",
-      "title":"JavaScript Dynamic Scoring Matrix"
+      "last_activity_date":1506544147,
+      "creation_date":1506543921,
+      "question_id":46456650,
+      "link":"https://stackoverflow.com/questions/46456650/media-query-based-jquery-function-not-working",
+      "title":"media-query based jquery function not working"
     }
+  ]
+}
 
 
 Flickr: https://www.flickr.com/services/api/
