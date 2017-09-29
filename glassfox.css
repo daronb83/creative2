@@ -6,7 +6,7 @@ body {
   padding: 0px auto;
 }
 
-h1 { font-size: 45px; text-align: center; font-weight: bold; padding-top: 20px; padding-bottom: 20px}
+h1 { font-size: 45px; color: white; text-align: center; font-weight: bold; padding-top: 20px; padding-bottom: 20px}
 h2 { font-size: 16px; font-weight: bold }
 h3 { font-size: 14px; font-weight: lighter; }
 p  { font-size: 16px; text-align: left; }
@@ -22,7 +22,7 @@ a:hover { color: #607D8B; text-decoration: underline; }
 a:visited { color: gray; text-decoration: none; }
 
 #page {
-  background-color: #CFD8DC;
+  background-color: #607D8B;
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100%;
