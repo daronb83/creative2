@@ -52,6 +52,10 @@ a:visited { color: gray; text-decoration: none; }
   height: auto;
 }
 
+#map {
+  height: 80%;
+}
+
 .floatBox {
   background-color: #FFFFFF;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -94,7 +98,4 @@ a:visited { color: gray; text-decoration: none; }
     h2 { font-size: 30px; }
     h3 { font-size: 24px; }
     p  { font-size: 30px; }
-}
-#map {
-  height: 100%;
 }
