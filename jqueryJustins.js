@@ -22,10 +22,10 @@ function initMap() {
 
 
 function getCoordsFromAddress(address) {
-  // build Geocoding API URL
-  var url = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo&address="
-  url += address;
-  console.log("Geocoding API URL:" + url);
+    // build Geocoding API URL
+    var url = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo&address="
+    url += address;
+    console.log("Geocoding API URL:" + url);
   var myCoordinates;
   // Geocoding JSON
   $.getJSON(url, function(data) {
