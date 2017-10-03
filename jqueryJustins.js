@@ -28,16 +28,25 @@ function getCoordsFromAddress(address) {
     console.log("Geocoding API URL:" + url);
   var myCoordinates;
   // Geocoding JSON
+
+  $.ajaxSetup({
+    async: false
+  });
+
   $.getJSON(url, function(data) {
     console.log(data);
     full_address = data["results"][0]["formatted_address"];
     var latitude = data["results"][0]["geometry"]["location"]["lat"];
     var long = data["results"][0]["geometry"]["location"]["lng"];
     myCoordinates = {lat: latitude, lng: long};
-    console.log(myCoordinates);
-
   });
-      return myCoordinates;
+
+  $.ajaxSetup({
+    async: true
+  });
+
+  console.log("myCoordinates: " + myCoordinates);
+  return myCoordinates;
 }
 
 $(document).ready(function() {
@@ -59,13 +68,10 @@ $(document).ready(function() {
     e.preventDefault();
 
     newCoords = getCoordsFromAddress(address);
-    console.log(newCoords);
+    console.log("new Coords: " + newCoords);
     map.panTo(newCoords);
     map.setZoom(12);
 
 
   });
 });
-
-
-    
