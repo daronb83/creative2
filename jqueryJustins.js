@@ -1,11 +1,13 @@
 var map;
 //var center;
  //var address = "";
-// var full_address = "Provo, UT, USA";
- //var coords = {lat: -25.363, lng: 131.044};
+var currentAddress = "Provo, UT, USA";
+var currentLat = -25.363;
+var currentLng = 131.044;
+//var coords = {lat: -25.363, lng: 131.044};
 
 function initMap() {
-  var myLatlng = {lat: -25.363, lng: 131.044};
+  var myLatlng = {lat: currentLat, lng: currentLng};
 
     map = new google.maps.Map(document.getElementById('map'), {
     zoom: 4,
@@ -14,18 +16,19 @@ function initMap() {
 
 
   map.addListener('center_changed', function() {
-    center = map.getCenter()
-    console.log(center.lat())
-    console.log(center.lng())
+    center = map.getCenter();
+    console.log(center.lat());
+    console.log(center.lng());
+    updateAddressFromCoords(center.lat(),center.lng());
   });
 }
 
 
-function getCoordsFromAddress(address) {
-    // build Geocoding API URL
-    var url = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo&address="
-    url += address;
-    console.log("Geocoding API URL:" + url);
+function getCoordsFromAddress() {
+  // build Geocoding API URL  
+  var url = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo&address="
+  url += encodeURIComponent(currentAddress);
+  console.log("Geocoding API URL:" + url);
   var myCoordinates;
   // Geocoding JSON
 
@@ -35,10 +38,12 @@ function getCoordsFromAddress(address) {
 
   $.getJSON(url, function(data) {
     console.log(data);
-    full_address = data["results"][0]["formatted_address"];
+    currentAddress = data["results"][0]["formatted_address"];
     var latitude = data["results"][0]["geometry"]["location"]["lat"];
     var long = data["results"][0]["geometry"]["location"]["lng"];
     myCoordinates = {lat: latitude, lng: long};
+    currentLat = latitude;
+    currentLng = long;
   });
 
   $.ajaxSetup({
@@ -49,29 +54,52 @@ function getCoordsFromAddress(address) {
   return myCoordinates;
 }
 
-$(document).ready(function() {
 
-  function refresh() {
+function refresh() {
+  newCoords = getCoordsFromAddress();
+  map.panTo(newCoords);
+}
 
+function updateAddressFromCoords(latitude, longitude) {
+
+  console.log("latdifference" + Math.abs(currentLat - latitude));
+  console.log("longdifference" + Math.abs(currentLng - longitude));
+  if(Math.abs(currentLat - latitude) > 0.5 && Math.abs(currentLng - longitude) > 0.5 && map.getZoom() > 11) {
+
+    insert = "latlng="+latitude+","+longitude;
+    // build Geocoding API URL  
+    var url = "https://maps.googleapis.com/maps/api/geocode/json?"+insert+"&key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo"
+    console.log("Geocoding API URL:" + url);
+    // Geocoding JSON
+
+    $.ajaxSetup({
+      async: false
+    });
+
+    $.getJSON(url, function(data) {
+      console.log(data);
+      currentAddress = data["results"][0]["formatted_address"];
+    });
+
+    $.ajaxSetup({
+      async: true
+    });
+    currentLat = latitude;
+    currentLng = longitude;
   }
 
+}
 
- // var address = "";
-  //var full_address = "";
-  //var coords = "";
+$(document).ready(function() {
 
   $("#GG_button").click(function(e){
-    // get input
-    address = encodeURIComponent($("#GG_input").val());
-    console.log("Google Geocoding and Maps")
-    console.log("Input: " + address);
+    
     e.preventDefault();
 
-    newCoords = getCoordsFromAddress(address);
-    console.log("new Coords: " + newCoords);
+    // update the global current address
+    currentAddress = encodeURIComponent($("#GG_input").val());
+    newCoords = getCoordsFromAddress();
     map.panTo(newCoords);
     map.setZoom(12);
-
-
   });
 });
