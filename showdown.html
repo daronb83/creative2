@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Api Test</title>
+<link rel="Stylesheet" type="text/css" href="glassfox.css" />
+<script
+  src="http://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous">
+</script>
+<script src="showdown.js"></script>
+</head>
+
+<body>
+
+  <div id="page">
+    <h1 style="padding-top:50px">API Test Page</h1>
+
+    <div class="floatBox">
+      <div>
+        <form>
+          <h2>Google Geocodeing and Maps (Location or Address): </h2>
+          <input type="text" id="GG_input" value="Provo, UT" class="right">
+          <input id="GG_button" type="submit" value="Submit" class="right"><br>
+        </form>
+        <div id="GG_results">No results</div>
+        <div id="WU_results"></div>
+      </div>
+    </div></br>
+
+    <div class="floatBox">
+      <div>
+        <form>
+          <h2 id="YT_header">Youtube Videos</h2>
+          <p>Search</p>
+          <input type="text" id="YT_input" value="cat" class="right">
+          <input id="YT_button" type="submit" value="Submit" class="right"><br>
+        </form>
+        <div id="YT_results">No results</div>
+      </div>
+    </div></br>
+
+  </div>
+</body>
+</html>
