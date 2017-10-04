@@ -23,6 +23,13 @@ function initMap() {
   });
 }
 
+/*function refresh() {
+      var resultList = "<ul>";
+      resultList += "<li><h2>" + currentAddress + "</h2></li>";
+      resultList += "<li>Coords: Latitude " + currentLat + " Longitude " + currentLng + "</li>";
+      resultList += "</ul>";
+      $("#GG_results").html(resultList);
+}*/
 
 function getCoordsFromAddress() {
   // build Geocoding API URL  
@@ -38,12 +45,15 @@ function getCoordsFromAddress() {
 
   $.getJSON(url, function(data) {
     console.log(data);
+    if(data["status"] == "OK") {
+
     currentAddress = data["results"][0]["formatted_address"];
     var latitude = data["results"][0]["geometry"]["location"]["lat"];
     var long = data["results"][0]["geometry"]["location"]["lng"];
     myCoordinates = {lat: latitude, lng: long};
     currentLat = latitude;
     currentLng = long;
+    }
   });
 
   $.ajaxSetup({
@@ -55,16 +65,11 @@ function getCoordsFromAddress() {
 }
 
 
-function refresh() {
-  newCoords = getCoordsFromAddress();
-  map.panTo(newCoords);
-}
-
 function updateAddressFromCoords(latitude, longitude) {
 
   console.log("latdifference" + Math.abs(currentLat - latitude));
   console.log("longdifference" + Math.abs(currentLng - longitude));
-  if(Math.abs(currentLat - latitude) > 0.5 && Math.abs(currentLng - longitude) > 0.5 && map.getZoom() > 11) {
+  if((Math.abs(currentLat - latitude) > 0.1 || Math.abs(currentLng - longitude) > 0.1) && map.getZoom() > 11) {
 
     insert = "latlng="+latitude+","+longitude;
     // build Geocoding API URL  
@@ -78,7 +83,13 @@ function updateAddressFromCoords(latitude, longitude) {
 
     $.getJSON(url, function(data) {
       console.log(data);
+      
       currentAddress = data["results"][0]["formatted_address"];
+       // city = data["results"][0]["address_components"][3];
+        //state = data["results"][0]["address_components"][4];
+        //console.log("city:  " + city + "  state:  " + state);
+
+      
     });
 
     $.ajaxSetup({
@@ -86,6 +97,7 @@ function updateAddressFromCoords(latitude, longitude) {
     });
     currentLat = latitude;
     currentLng = longitude;
+    //refresh();
   }
 
 }
@@ -97,9 +109,10 @@ $(document).ready(function() {
     e.preventDefault();
 
     // update the global current address
-    currentAddress = encodeURIComponent($("#GG_input").val());
+    currentAddress = $("#GG_input").val();
     newCoords = getCoordsFromAddress();
     map.panTo(newCoords);
     map.setZoom(12);
+    //refresh();
   });
 });
