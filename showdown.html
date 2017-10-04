@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Api Test</title>
+<link rel="Stylesheet" type="text/css" href="glassfox.css" />
+<script
+  src="http://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous">
+</script>
+<script src="jquery.js"></script>
+</head>
+
+<body>
+
+  <div id="page">
+
+    <img src="logo.png" alt="Youtube" style="width: 397px; height: 89px;">
+    <h1 style="padding-top:50px">Showdown!</h1>
+
+    <div class="floatBox">
+      <div>
+        <form style="margin: 0 auto">
+
+          <h2>Pick two search terms to duke it out!</h2>
+          <div>
+            <input type="text" id="YT_input1" value="dog">
+            <input type="text" id="YT_input2" value="cat">
+          </div><br>
+
+          <h2>Pick an Arena! (City and State)</h2>
+          <div>
+            <input type="text" id="GG_input" value="Provo, UT">
+            <input id="GG_button" type="submit" value="Submit">
+          </div>
+
+        </form>
+        <div id="GG_results">No results</div>
+        <div id="WU_results"></div>
+      </div>
+    </div></br>
+
+    <div class="floatBox">
+      <div>
+        <form>
+          <h2 id="YT_header">Youtube Videos</h2>
+          <p>Search</p>
+          <input id="YT_button" type="submit" value="Submit" class="right"><br>
+        </form>
+        <div id="YT_results">No results</div>
+      </div>
+    </div></br>
+
+  </div>
+</body>
+</html>

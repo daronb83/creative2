@@ -6,15 +6,22 @@ body {
   padding: 0px auto;
 }
 
-h1 { font-size: 45px; text-align: center; font-weight: bold; padding-top: 20px; padding-bottom: 20px}
-h2 { font-size: 16px; font-weight: bold }
+h1 { font-size: 45px; text-align: center; font-weight: bold; padding:0px; margin-top:-30px}
+h2 { font-size: 16px; text-align: center; font-weight: bold }
 h3 { font-size: 14px; font-weight: lighter; }
 p  { font-size: 16px; text-align: left; }
 
+img {
+  padding-top: 30px;
+  height: 89px;
+  width: 397px;
+}
+
 input[type=text] {
-  width: 85%;
+  width: 40%;
   vertical-align: middle;
-  padding: 10px
+  padding: 10px;
+  margin: 1%;
 }
 
 input[type=submit] {
@@ -48,12 +55,26 @@ a:visited { color: gray; text-decoration: none; }
   background-repeat: no-repeat;
   min-height: 100%;
   width: 100%;
-  margin: auto;
+  padding: 0px;
+  margin: 0 auto;
   height: auto;
 }
 
 #map {
   height: 80%;
+}
+
+form {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+img {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 0px;
 }
 
 .floatBox {

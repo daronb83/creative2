@@ -41,7 +41,7 @@ $(document).ready(function() {
       resultList += "<li>Coords: " + coords + "</li>";
       resultList += "<li>" + iframe + "</li>";
 
-      console.log("Weather Underground")
+      /*console.log("Weather Underground")
 
       // build Weather Underground API URL
       url = "https://api.wunderground.com/api/b5842b6ee6e1e144/geolookup/conditions/q/";
@@ -59,26 +59,26 @@ $(document).ready(function() {
         resultList += "<li><h2>Weather</h2></li>";
         resultList += "<li>Temperature: " + temp + "</li>";
         resultList += "<li>" + weather + "</li>";
-        resultList += "<li><img src=\"" + icon + "\"></li>";
+        //resultList += "<li><img src=\"" + icon + "\"></li>";
         //resultList += "<li>Weather Coords: " + lat + "," + long + "</li>";
-        resultList += "</ul>";
-        $("#GG_results").html(resultList);
+      });*/
 
-      });
+      resultList += "</ul>";
+      $("#GG_results").html(resultList);
 
-      $("#YT_input").val("cats");
       youtube();
     });
   });
 
   function youtube() {
-    var input = encodeURIComponent($("#YT_input").val());
+    var input1 = encodeURIComponent($("#YT_input1").val());
+    var input2 = encodeURIComponent($("#YT_input2").val());
     var radius = "10mi";
     console.log("Youtube")
 
     // build API URL
     var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=3&key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo";
-    url += "&q=" + input;
+    url += "&q=" + input1;
     if (coords !== "") {
       $("#YT_header").html("Youtube Videos within " + radius + " of " + full_address);
       url += "&location=" + coords + "&locationRadius=" + radius;
@@ -106,32 +106,5 @@ $(document).ready(function() {
   $("#YT_button").click(function(e){
     e.preventDefault();
     youtube();
-  });
-
-  $("#SO_button").click(function(e){
-    // get input
-    var input = encodeURIComponent($("#SO_input").val());
-    console.log("Stack Exchange")
-    console.log("Input: " + input);
-    e.preventDefault();
-
-    // build API URL
-    var url = "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&site=stackoverflow&intitle="
-    url += input;
-    console.log("API URL:" + url);
-
-    // JSON
-    $.getJSON(url, function(data) {
-      var resultList = "<ul>";
-
-      for (var i = 0; i < data.items.length; i++) {
-        var link = data.items[i].link;
-        var title = data.items[i].title;
-        resultList += "<li><a href=\"" + link + "\" target=\"_blank\">" + title + "</a>";
-      }
-
-      resultList += "</ul>";
-      $("#SO_results").html(resultList);
-    });
   });
 });
