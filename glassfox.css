@@ -6,7 +6,7 @@ body {
   padding: 0px auto;
 }
 
-h1 { font-size: 45px; text-align: center; font-weight: bold; padding:0px; margin-top:-30px}
+h1 { font-size: 45px; text-align: center; font-weight: bold; padding:0px; margin-top: 2px}
 h2 { font-size: 16px; text-align: center; font-weight: bold }
 h3 { font-size: 14px; font-weight: lighter; }
 p  { font-size: 16px; text-align: left; }
@@ -68,7 +68,7 @@ form {
   text-align: center;
 }
 
-img {
+#logo {
   display: block;
   margin: auto;
   margin-top: 20px;
