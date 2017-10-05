@@ -2,7 +2,7 @@ body {
   margin: 0px auto;
   font-family: Arial, sans-serif;
   font-size: 16px;
-  background: #FFFFFF;
+  background: #222222;
   padding: 0px auto;
 }
 
@@ -20,6 +20,7 @@ input[type=text] {
   vertical-align: middle;
   padding: 10px;
   margin: 1%;
+  font-size: 18px;
 }
 
 input[type=submit] {
@@ -33,7 +34,7 @@ input[type=submit] {
     text-decoration: none;
     font-weight: bold;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 18px;
     transition-duration: 0.4s;
 }
 
@@ -48,9 +49,9 @@ a:hover { color: #607D8B; text-decoration: underline; }
 a:visited { color: gray; text-decoration: none; }
 
 #page {
-  background-color: #DEDEDE;
-  background-size: cover;
+  background-color: #000000;
   background-repeat: no-repeat;
+  background-image: url("background.jpg");
   min-height: 100%;
   width: 100%;
   padding: 0px;

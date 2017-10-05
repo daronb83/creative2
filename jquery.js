@@ -26,20 +26,23 @@ $(document).ready(function() {
       coords = lat + "," + long;
 
       var iframe = "<iframe ";
-      iframe += "width=\"600\"";
-      iframe += "height=\"450\"";
+      iframe += "width=\"100%\"";
+      iframe += "height=\"50%\"";
       iframe += "frameborder=\"0\"";
-      iframe += "style=\"border:0\"";
+      iframe += "style=\"border:0;\"";
       iframe += "src=\"https://www.google.com/maps/embed/v1/place?";
       iframe += "key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo";
+      iframe += "&maptype=satellite";
       iframe += "&q=" + address;
-      iframe += "\" allowfullscreen></iframe>";
+      iframe += "\"></iframe>";
       console.log(iframe);
 
-      var resultList = "<ul>";
-      resultList += "<li><h2>" + full_address + "</h2></li>";
-      resultList += "<li>Coords: " + coords + "</li>";
-      resultList += "<li>" + iframe + "</li>";
+      var input1 = encodeURIComponent($("#YT_input1").val());
+      var input2 = encodeURIComponent($("#YT_input2").val());
+
+      var resultList = "<br><h1>" + input1 + "&nbsp vs &nbsp" + input2 + "</h1>"
+      resultList += "<h2>" + full_address + "</h2>";
+      resultList += iframe + "<br>";
 
       /*console.log("Weather Underground")
 
@@ -63,9 +66,8 @@ $(document).ready(function() {
         //resultList += "<li>Weather Coords: " + lat + "," + long + "</li>";
       });*/
 
-      resultList += "</ul>";
       $("#GG_results").html(resultList);
-
+      $("#results").slideDown();
       youtube();
     });
   });
@@ -130,7 +132,7 @@ $(document).ready(function() {
       }
       resultList2 += "</ul>";
 
-      
+
 
     });
 
@@ -146,7 +148,7 @@ $(document).ready(function() {
       $("#Match_results").html(stringBuild);
       $("#YT_results").html(resultList2);
     }
-    
+
   }
 
   $("#YT_button").click(function(e){

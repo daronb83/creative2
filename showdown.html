@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Api Test</title>
+<title>Youtube Showdown</title>
 <link rel="Stylesheet" type="text/css" href="glassfox.css" />
 <script
   src="http://code.jquery.com/jquery-3.2.1.min.js"
@@ -14,17 +14,22 @@
 
   <div id="page">
 
-    <img src="logo.png" alt="Youtube" style="width: 397px; height: 89px;">
-    <h1 style="padding-top:50px">Showdown!</h1>
+    <img id="logo" src="logo.png" alt="Youtube" style="width: 397px; height: 89px;">
+    <h1>Showdown!</h1>
 
-    <div class="floatBox">
+    <div id="search" class="floatBox">
+
+      <div id="results" style="display: none;">
+        <div id="GG_results" style="display: block; width:auto; margin:auto;"></div>
+      </div>
+
       <div>
         <form style="margin: 0 auto">
 
-          <h2>Pick two search terms to duke it out!</h2>
+          <h2><br>Pick two search terms to duke it out!</h2>
           <div>
-            <input type="text" id="YT_input1" value="dog">
-            <input type="text" id="YT_input2" value="cat">
+            <input type="text" id="YT_input1" value="Dog">
+            <input type="text" id="YT_input2" value="Cat">
           </div><br>
 
           <h2>Pick an Arena! (City and State)</h2>
@@ -34,22 +39,21 @@
           </div>
 
         </form>
-        <div id="GG_results">No results</div>
-        <div id="WU_results"></div>
       </div>
+
     </div></br>
 
     <div class="floatBox">
       <div>
         <form>
           <h2 id="YT_header">Winner of the match</h2>
-          <div> 
-            <label for="radius">Radius in Miles: </label>         
-            <input type="text" id="radius" value="10">                   
+          <div>
+            <label for="radius">Radius in Miles: </label>
+            <input type="text" id="radius" value="10">
           </div>
         </form>
         <h1 id="Match_results" style="margin-top: 20px">Winner Results</h1>
-        <div id="YT_results">No results</div> 
+        <div id="YT_results">No results</div>
       </div>
     </div></br>
 
