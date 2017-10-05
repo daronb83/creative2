@@ -1,13 +1,25 @@
 
 $(document).ready(function() {
 
+  setHints();
   var address = "";
   var full_address = "";
   var coords = "";
 
   $("#GG_button").click(function(e){
+    console.log("Clicked submit");
+    e.preventDefault();
+
     // get input
+    var input1 = encodeURIComponent($("#YT_input1").val());
+    var input2 = encodeURIComponent($("#YT_input2").val());
     address = encodeURIComponent($("#GG_input").val());
+
+    if (!validateInput()){
+      console.log("Invalid input");
+      return;
+    }
+
     console.log("Google Geocoding and Maps")
     console.log("Input: " + address);
     e.preventDefault();
@@ -37,46 +49,71 @@ $(document).ready(function() {
       iframe += "\"></iframe>";
       console.log(iframe);
 
-      var input1 = encodeURIComponent($("#YT_input1").val());
-      var input2 = encodeURIComponent($("#YT_input2").val());
-
-      var resultList = "<br><h1>" + input1 + "&nbsp vs &nbsp" + input2 + "</h1>"
+      var resultList = "<br><h1><div id=\"c1\">" + input1 + "</div>&nbsp vs &nbsp<div id=\"c2\">" + input2 + "</div></h1>"
       resultList += "<h2>" + full_address + "</h2>";
       resultList += iframe + "<br>";
 
-      /*console.log("Weather Underground")
-
-      // build Weather Underground API URL
-      url = "https://api.wunderground.com/api/b5842b6ee6e1e144/geolookup/conditions/q/";
-      url += address + ".json";
-      console.log("API URL:" + url);
-
-      // Weather Underground JSON
-      $.getJSON(url, function(data) {
-        var temp = data.current_observation.temperature_string;
-        var weather = data.current_observation.weather;
-        var lat = data.current_observation.display_location.latitude;
-        var long = data.current_observation.display_location.longitude;
-        var icon = data.current_observation.icon_url;
-
-        resultList += "<li><h2>Weather</h2></li>";
-        resultList += "<li>Temperature: " + temp + "</li>";
-        resultList += "<li>" + weather + "</li>";
-        //resultList += "<li><img src=\"" + icon + "\"></li>";
-        //resultList += "<li>Weather Coords: " + lat + "," + long + "</li>";
-      });*/
-
       $("#GG_results").html(resultList);
       $("#results").slideDown();
+      $("#forms").hide();
       youtube();
     });
   });
 
+  function validateInput() {
+    var valid = true;
+    $("#YT_input1").removeAttr('style');
+    $("#YT_input2").removeAttr('style');
+    $("#GG_input").removeAttr('style');
+
+    if ($("#YT_input1").val() === "") {
+      valid = false;
+      $("#YT_input1").attr('style', 'border: 2px solid red;');
+    }
+
+    if ($("#YT_input2").val() === "") {
+      valid = false;
+      $("#YT_input2").attr('style', 'border: 2px solid red;');
+    }
+
+    if ($("#GG_input").val() === "") {
+      valid = false;
+      $("#GG_input").attr('style', 'border: 2px solid red;');
+    }
+
+    return valid;
+  }
+
+  function setHints() {
+    var random = Math.floor(Math.random() * 4);
+
+    switch (random) {
+      case 0:
+        $("#YT_input1").attr('placeholder', 'Pirates');
+        $("#YT_input2").attr('placeholder', 'Ninjas');
+        break;
+      case 1:
+        $("#YT_input1").attr('placeholder', 'Pie');
+        $("#YT_input2").attr('placeholder', 'Cake');
+        break;
+      case 2:
+        $("#YT_input1").attr('placeholder', 'Cats');
+        $("#YT_input2").attr('placeholder', 'Dogs');
+        break;
+      case 3:
+        $("#YT_input1").attr('placeholder', 'Batman');
+        $("#YT_input2").attr('placeholder', 'Superman');
+        break;
+    }
+  }
+
   function youtube() {
+    console.log("Youtube")
+
     var input1 = encodeURIComponent($("#YT_input1").val());
     var input2 = encodeURIComponent($("#YT_input2").val());
-    var radius = $("#radius").val() + "mi"
-    console.log("Youtube")
+    var radius = $("#radius").val() + "mi";
+    $("#resultBox").show();
 
     // build API URL for input 1
     var url1 = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=3&key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo";
@@ -139,6 +176,7 @@ $(document).ready(function() {
     $.ajaxSetup({
       async: true
     });
+
     if (resultCount1 > resultCount2) {
       stringBuild = "<h1>"+input1+" wins with "+ resultCount1 + " results</h1>";
       $("#Match_results").html(stringBuild);
