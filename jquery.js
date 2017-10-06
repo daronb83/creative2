@@ -85,7 +85,7 @@ $(document).ready(function() {
   }
 
   function setHints() {
-    var random = Math.floor(Math.random() * 6);
+    var random = Math.floor(Math.random() * 7);
 
     switch (random) {
       case 0:
@@ -112,6 +112,10 @@ $(document).ready(function() {
         $("#YT_input1").attr('placeholder', 'iPhone');
         $("#YT_input2").attr('placeholder', 'Android');
         break;
+      case 6:
+        $("#YT_input1").attr('placeholder', 'Red');
+        $("#YT_input2").attr('placeholder', 'Blue');
+        break;
     }
   }
 
@@ -121,7 +125,6 @@ $(document).ready(function() {
     var input1 = encodeURIComponent($("#YT_input1").val());
     var input2 = encodeURIComponent($("#YT_input2").val());
     var radius = $("#radius").val() + "mi";
-    $("#resultBox").show();
 
     // build API URL for input 1
     var url1 = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=3&key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo";
@@ -184,11 +187,14 @@ $(document).ready(function() {
       async: true
     });
 
+    buildBar(input1, resultCount1, input2, resultCount2);
+
     if (resultCount1 > resultCount2) {
       stringBuild = "<h1>"+input1+" wins with "+ resultCount1 + " results</h1>";
       $("#Match_results").html(stringBuild);
       $("#YT_results").html(resultList1);
-    }    else {
+    }
+    else {
       stringBuild = "<h1>"+input2+" wins with "+ resultCount2 + " results</h1>";
       $("#Match_results").html(stringBuild);
       $("#YT_results").html(resultList2);
@@ -196,8 +202,20 @@ $(document).ready(function() {
 
   }
 
-  $("#YT_button").click(function(e){
-    e.preventDefault();
-    youtube();
+  function buildBar (leftName, left, rightName, right) {
+    var inc = 100 / (left + right);
+    $("#left_bar").css("width", inc * left + "%");
+    $("#left_bar").html("&nbsp&nbsp" + leftName + ": " + left);
+    $("#right_bar").css("width", inc * right + "%");
+    $("#right_bar").html(rightName + ": " + right + "&nbsp&nbsp");
+  }
+
+  $("#results").click(function(){
+    $("#resultBox").slideDown();
+    $("#results").hide();
+  });
+
+  $("#resultBox").click(function(){
+    location.reload();
   });
 });
