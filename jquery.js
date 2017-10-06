@@ -85,7 +85,7 @@ $(document).ready(function() {
   }
 
   function setHints() {
-    var random = Math.floor(Math.random() * 4);
+    var random = Math.floor(Math.random() * 6);
 
     switch (random) {
       case 0:
@@ -103,6 +103,14 @@ $(document).ready(function() {
       case 3:
         $("#YT_input1").attr('placeholder', 'Batman');
         $("#YT_input2").attr('placeholder', 'Superman');
+        break;
+      case 4:
+        $("#YT_input1").attr('placeholder', 'Coke');
+        $("#YT_input2").attr('placeholder', 'Pepsi');
+        break;
+      case 5:
+        $("#YT_input1").attr('placeholder', 'iPhone');
+        $("#YT_input2").attr('placeholder', 'Android');
         break;
     }
   }
@@ -125,10 +133,9 @@ $(document).ready(function() {
     console.log("API URL:" + url1);
 
     // build API URL for input 2
-    var url2 = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=3&key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo";
+    var url2 = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=10&key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo";
     url2 += "&q=" + input2;
     if (coords !== "") {
-      $("#YT_header").html("Youtube Videos within " + radius + " of " + full_address);
       url2 += "&location=" + coords + "&locationRadius=" + radius;
     }
     console.log("API URL:" + url2);
@@ -144,7 +151,7 @@ $(document).ready(function() {
     // JSON url1
     $.getJSON(url1, function(data1) {
       resultCount1 = data1["pageInfo"]["totalResults"];
-      resultList1 = "<ul><li>Total Results: " + resultCount1 + "</li>";
+      resultList1 = "<ul>Check out these videos that were posted nearby!<li></li>";
 
       for (var i = 0; i < data1["items"].length; i++) {
         resultList1 += "<li><b>Title: </b>" + data1["items"][i]["snippet"]["title"] + "<br>";
@@ -159,7 +166,7 @@ $(document).ready(function() {
     // JSON url2
     $.getJSON(url2, function(data2) {
       resultCount2 = data2["pageInfo"]["totalResults"];
-      resultList2 = "<ul><li>Total Results: " + resultCount2 + "</li>";
+      resultList2 = "<ul>Check out these videos that were posted nearby!<li></li>";
 
       for (var i = 0; i < data2["items"].length; i++) {
         resultList2 += "<li><b>Title: </b>" + data2["items"][i]["snippet"]["title"] + "<br>";

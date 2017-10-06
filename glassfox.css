@@ -84,6 +84,24 @@ a:visited { color: gray; text-decoration: none; }
   display: inline-block;
 }
 
+#GG_results {
+  display: block;
+  width:auto;
+  margin:auto;
+}
+
+.center {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: red;
+    z-index: 10;
+    font-family: Courier, serif;
+    font-size: 160;
+}
+
 .floatBox {
   background-color: #FFFFFF;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -97,6 +115,21 @@ a:visited { color: gray; text-decoration: none; }
 .table { display: table; width: 100%; }
 .row { display:table-row; }
 .cell { display:table-cell; padding:10px; width: 50%; }
+
+.shake { animation: shake 0.5s; animation-iteration-count: infinite; }
+@keyframes shake {
+  0% { transform: translate(8px, 8px) rotate(0deg); }
+  10% { transform: translate(-8px, -8px) rotate(-4deg); }
+  20% { transform: translate(-24px, 0px) rotate(4deg); }
+  30% { transform: translate(24px, 16px) rotate(0deg); }
+  40% { transform: translate(8px, -8px) rotate(4deg); }
+  50% { transform: translate(-8px, 16px) rotate(-4deg); }
+  60% { transform: translate(-24px, 8px) rotate(0deg); }
+  70% { transform: translate(24px, 8px) rotate(-4deg); }
+  80% { transform: translate(-8px, -8px) rotate(4deg); }
+  90% { transform: translate(8px, 16px) rotate(0deg); }
+  100% { transform: translate(8px, -16px) rotate(-4deg); }
+}
 
 
 @media (min-width:1100px) {
