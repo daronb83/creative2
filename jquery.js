@@ -153,7 +153,7 @@ $(document).ready(function() {
     // JSON url1
     $.getJSON(url1, function(data1) {
       resultCount1 = data1["pageInfo"]["totalResults"];
-      resultList1 = "<ul><b>Check out these " + input1 + " videos from within " + radius + "miles!</b><li></li>";
+      resultList1 = "<ul><b>Check out these " + input1 + " videos from within " + radius + "!</b><li></li>";
 
       for (var i = 0; i < data1["items"].length; i++) {
         resultList1 += "<li><b>Title: </b>" + data1["items"][i]["snippet"]["title"] + "<br>";
@@ -168,7 +168,7 @@ $(document).ready(function() {
     // JSON url2
     $.getJSON(url2, function(data2) {
       resultCount2 = data2["pageInfo"]["totalResults"];
-      resultList2 = "<ul><b>Check out these " + input2 + " videos from within " + radius + "</b><li></li>";
+      resultList2 = "<ul><b>Check out these " + input2 + " videos from within " + radius + "!</b><li></li>";
 
       for (var i = 0; i < data2["items"].length; i++) {
         resultList2 += "<li><b>Title: </b>" + data2["items"][i]["snippet"]["title"] + "<br>";
