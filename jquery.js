@@ -54,8 +54,8 @@ $(document).ready(function() {
       resultList += iframe + "<br>";
 
       $("#GG_results").html(resultList);
-      $("#results").slideDown();
       $("#forms").hide();
+      $("#results").fadeIn(4000);
       youtube();
     });
   });
@@ -127,10 +127,9 @@ $(document).ready(function() {
     var radius = $("#radius").val() + "mi";
 
     // build API URL for input 1
-    var url1 = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=3&key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo";
+    var url1 = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=10&key=AIzaSyBW7MzBq1JwCe6Jv-uViDGjvs8rK5jE4wo";
     url1 += "&q=" + input1;
     if (coords !== "") {
-      $("#YT_header").html("Youtube Videos within " + radius + " of " + full_address);
       url1 += "&location=" + coords + "&locationRadius=" + radius;
     }
     console.log("API URL:" + url1);
@@ -154,7 +153,7 @@ $(document).ready(function() {
     // JSON url1
     $.getJSON(url1, function(data1) {
       resultCount1 = data1["pageInfo"]["totalResults"];
-      resultList1 = "<ul>Check out these videos that were posted nearby!<li></li>";
+      resultList1 = "<ul><b>Check out these " + input1 + " videos from within " + radius + "miles!</b><li></li>";
 
       for (var i = 0; i < data1["items"].length; i++) {
         resultList1 += "<li><b>Title: </b>" + data1["items"][i]["snippet"]["title"] + "<br>";
@@ -169,7 +168,7 @@ $(document).ready(function() {
     // JSON url2
     $.getJSON(url2, function(data2) {
       resultCount2 = data2["pageInfo"]["totalResults"];
-      resultList2 = "<ul>Check out these videos that were posted nearby!<li></li>";
+      resultList2 = "<ul><b>Check out these " + input2 + " videos from within " + radius + "</b><li></li>";
 
       for (var i = 0; i < data2["items"].length; i++) {
         resultList2 += "<li><b>Title: </b>" + data2["items"][i]["snippet"]["title"] + "<br>";
@@ -190,12 +189,12 @@ $(document).ready(function() {
     buildBar(input1, resultCount1, input2, resultCount2);
 
     if (resultCount1 > resultCount2) {
-      stringBuild = "<h1>"+input1+" wins with "+ resultCount1 + " results</h1>";
+      stringBuild = "<h1>"+input1+" wins!</h1>";
       $("#Match_results").html(stringBuild);
       $("#YT_results").html(resultList1);
     }
     else {
-      stringBuild = "<h1>"+input2+" wins with "+ resultCount2 + " results</h1>";
+      stringBuild = "<h1>"+input2+" wins!</h1>";
       $("#Match_results").html(stringBuild);
       $("#YT_results").html(resultList2);
     }
@@ -212,7 +211,7 @@ $(document).ready(function() {
 
   $("#results").click(function(){
     $("#resultBox").slideDown();
-    $("#results").hide();
+    $("#search").hide();
   });
 
   $("#resultBox").click(function(){
